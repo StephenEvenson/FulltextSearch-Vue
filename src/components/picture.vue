@@ -2,9 +2,8 @@
   <div class="img-list">
   <div class="img-content" v-for="(item,key) in imagelist" :key="key">
     <img :src="item.url">
-    <div class="name" v-for="i in imagelist">
-      <div>名字：{{ item.personName }}  {{ item.text }}</div>
-      <div>{{ item.text }}</div>
+    <div class="name" v-for="i in item.helmets">
+      <div>姓名：{{ i.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头盔：{{ i.helmet }}</div>
     </div>
     <!-- 删除icon -->
     <div class="del" @click="handleFileRemove(item,key)">
@@ -76,6 +75,7 @@
             loadPictures(){
                 var _this = this;
                 this.imagelist=img.images;
+                console.log(this.imagelist);
                 for(var i=0;i<this.imagelist.length;i++){
                     this.imagelist[i].url=require("../../static/images/"+this.imagelist[i].url);
                     console.log(this.imagelist[i].url);
@@ -139,12 +139,11 @@
                 console.log("——————————success——————————")
                 this.pass = true;
                 this.$message.success("上传成功");
-                file.url=require('../../static/images/1.jpeg');
-                //file.url=require('../../static/images/'+e.image);
+                //file.url=require('../../static/images/1.jpeg');
+                file.url=require('../../static/images/'+e.image);
                 this.imagelist.push({
                     url: file.url,
-                    //personName: e.name,
-                    //text:e.text
+                    helmets: e.helmets,
                 })
                 console.log(this.imagelist);
             },
@@ -186,10 +185,10 @@
     border-radius:4px;
   }
   .img-list .img-content .name{
-    margin-top:10px;
+    margin-top:5px;
   }
   .img-list .img-content .name>div{
-    width:90%;
+    font-size: 10px;
     text-overflow:ellipsis;
     overflow:hidden;
     height:25px;

@@ -39,12 +39,12 @@ export default new Router({
       hidden:true,
     },*/
     {
-      path: '/login',
+      path: '/',
       name: 'Login',
       component: Login,
       hidden: true
     }, {
-      path: '/',
+      path: '/home',
       name: '主页',
       component: Home,
       hidden: true,

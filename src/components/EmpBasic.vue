@@ -365,7 +365,7 @@
           if (resp && resp.status == 200) {
             //var data = resp.data;
             this.emps = resp.data;
-              //console.log(this.emps[0].name);
+            console.log(resp);
               for(var i=0;i<_this.emps.length;i++){
                   if(_this.emps[i.toString()].gender=='male'){
                       _this.emps[i.toString()].gender='男'
@@ -373,10 +373,6 @@
                       _this.emps[i.toString()].gender='女'
                   }
               }
-              //console.log(_this.emps.length)
-            //_this.totalCount = data.count;
-              //console.log(_this.emps);
-            //_this.emptyEmpData();
           }
         })
       },
@@ -410,7 +406,6 @@
                         console.log(this.emp);
                         this.postRequest("/employee", this.emp).then(resp => {
                             _this.tableLoading = false;
-                            //console.log(this.emp);
                             if (resp && resp.status == 200) {
                                 var data = resp.data;
                                 _this.dialogVisible = false;
