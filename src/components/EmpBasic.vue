@@ -79,11 +79,11 @@
             <el-table-column
               type="selection"
               align="left"
-              width="40">
+              min-width="5%">
             </el-table-column>
             <el-table-column
               prop="employeeNo"
-              width="100"
+              min-width="17%"
               align="left"
               fixed
               label="工号">
@@ -92,32 +92,32 @@
               prop="name"
               align="left"
               label="姓名"
-              width="100">
+              min-width="12%">
             </el-table-column>
             <el-table-column
               prop="gender"
               label="性别"
-              width="60">
+              min-width="8%">
             </el-table-column>
             <el-table-column
               prop="age"
-              width="60"
+              min-width="8%"
               label="年龄">
             </el-table-column>
             <el-table-column
               prop="telephoneNo"
-              width="130"
+              min-width="17%"
               align="left"
               label="电话号码">
             </el-table-column>
             <el-table-column
               prop="departmentName"
               align="left"
-              width="120"
+              min-width="9%"
               label="所属部门">
             </el-table-column>
             <el-table-column
-              width="120"
+              min-width="9%"
               align="left"
               prop="positionName"
               label="职位">
@@ -126,7 +126,7 @@
               fixed="right"
               align="center"
               label="操作"
-              width="130">
+              min-width="15%">
               <template slot-scope="scope">
                 <el-button @click="showEditEmpView(scope.row)" style="padding: 3px 8px 3px 4px;margin: 2px"
                            size="mini">编辑

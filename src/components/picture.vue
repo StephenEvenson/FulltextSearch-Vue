@@ -119,6 +119,7 @@
             uploadOnProgress(e,file){//开始上传
                 console.log(e.percent,file)
                 this.progress = Math.floor(e.percent)
+                sleep(this,1500);
             },
             uploadOnChange(file){
                 console.log("——————————change——————————")
@@ -140,12 +141,14 @@
                 this.pass = true;
                 this.$message.success("上传成功");
                 //file.url=require('../../static/images/1.jpeg');
-                file.url=require('../../static/images/'+e.image);
+                //file.url=require('../../static/images/'+e.image);
+                file.url=require('../../static/images/1.jpeg');
                 this.imagelist.push({
                     url: file.url,
                     helmets: e.helmets,
                 })
-                console.log(this.imagelist);
+                console.log(typeof(e.image));
+                //console.log(this.imagelist);
             },
             uploadOnError(e,file){
                 console.log("——————————error——————————")
