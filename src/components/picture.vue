@@ -80,7 +80,6 @@
                     this.imagelist[i].url=require("../../static/images/"+this.imagelist[i].url);
                     console.log(this.imagelist[i].url);
                 }
-               // console.log(img.images);
             },
 
 
@@ -104,7 +103,6 @@
                     type: 'warning'
                 }).then(() => {
                     //可添加ajax
-                    this.$message.success("删除成功")
                     this.$message({
                         type: 'success',
                         message: '删除成功',
@@ -117,9 +115,9 @@
 
 
             uploadOnProgress(e,file){//开始上传
-                console.log(e.percent,file)
-                this.progress = Math.floor(e.percent)
-                sleep(this,1500);
+                this.progress = Math.floor(e.percent);
+                console.log(e.percent,file);
+                setTimeout(this.uploadOnChange(file),10000);
             },
             uploadOnChange(file){
                 console.log("——————————change——————————")
@@ -129,6 +127,7 @@
                     this.$nextTick(() => {
                         this.$refs.upload.submit();
                     })
+
                     //重置progress组件
                     this.pass = null;
                     this.progress = 0;
@@ -141,14 +140,19 @@
                 this.pass = true;
                 this.$message.success("上传成功");
                 //file.url=require('../../static/images/1.jpeg');
-                //file.url=require('../../static/images/'+e.image);
+                file.url=require('../../static/images/'+e.image);
+                if(!e.existFace){
+                    setTimeout(()=>{
+                    this.$message.error("未检测到人脸！");
+                        },500)
+                }else{
                 file.url=require('../../static/images/1.jpeg');
                 this.imagelist.push({
                     url: file.url,
                     helmets: e.helmets,
                 })
-                console.log(typeof(e.image));
-                //console.log(this.imagelist);
+                console.log(e.existFace);
+            }
             },
             uploadOnError(e,file){
                 console.log("——————————error——————————")
