@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import EmpBasic from '@/components/EmpBasic'
-//import Video from "../components/Video";
 import picture from '../components/picture'
+import File from '../components/File'
 // import EmpAdv from '@/components/emp/EmpAdv'
 // import EmpBasic from '@/components/emp/EmpBasic'
 // import PerEc from '@/components/personnel/PerEc'
@@ -60,8 +60,13 @@ export default new Router({
         },{
           path: '/image',
           component: picture,
-          name: '图片管理',
+          name: '人脸识别',
           meta:{title:'图片信息'}
+        },{
+          path: '/file',
+          component: File,
+          name: '文件搜索',
+          meta:{title:'搜索文件'}
         }
       ]
     }

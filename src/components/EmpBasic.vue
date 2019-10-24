@@ -143,7 +143,7 @@
             </el-button>
             <el-pagination
               background
-              :page-size="15"
+              :page-size="10"
               :current-page="currentPage"
               @current-change="currentChange"
               layout="prev, pager, next"
@@ -251,6 +251,7 @@
         positions: [],
         deps:[],
         totalCount: -1,
+          pageCount:7,
         currentPage: 1,
         dialogVisible: false,
         tableLoading: false,
@@ -360,12 +361,14 @@
       loadEmps() {
         var _this = this;
         this.tableLoading = true;
-        this.getRequest("/employees?employeeName=" + this.keywords).then(resp => {
+        this.getRequest("/employees?employeeName=" + this.keywords+"&currentPage="+this.currentPage).then(resp => {
           this.tableLoading = false;
           if (resp && resp.status == 200) {
-            //var data = resp.data;
-            this.emps = resp.data;
-            console.log(resp);
+            var data = resp.data;
+            _this.emps = data.employees;
+            //_this.pageCount=7;
+              _this.totalCount=data.count;
+            console.log(_this.count);
               for(var i=0;i<_this.emps.length;i++){
                   if(_this.emps[i.toString()].gender=='male'){
                       _this.emps[i.toString()].gender='男'

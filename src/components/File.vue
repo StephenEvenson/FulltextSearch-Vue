@@ -1,0 +1,81 @@
+<template>
+  <div>
+  <div style="display: inline">
+    <el-input
+      placeholder="请输入搜索内容...."
+      clearable
+      style="width: 300px;margin: 0px;padding: 0px;"
+      size="medium"
+      @keyup.enter.native="searchEmp"
+      prefix-icon="el-icon-search"
+      v-model="keywords">
+    </el-input>
+    <el-button type="primary" size="medium" style="margin-left: 5px" icon="el-icon-search" v-loading.fullscreen.lock="fullscreenLoading" @click="searchEmp">搜索
+    </el-button>
+  </div>
+    <el-form :model="files" style="width: 90%;margin-left: 3%">
+    <div v-for="(item,key) in files" :key="key" >
+      <el-row>
+        <div align="left" class="nameTitle">{{item.title}}</div>
+      </el-row>
+      <el-row>
+      <div v-for="i in item.highlight">
+      <div align="left" class="nameContent" v-html="i">{{i}}</div>
+      </div>
+      </el-row>
+      <el-divider></el-divider>
+    </div>
+    </el-form>
+  </div>
+</template>
+
+<script>
+
+    export default {
+        data(){
+            return{
+            keywords:'',
+            files:[],
+            fullscreenLoading: false,
+            }
+        },
+        methods:{
+            searchEmp() {
+                this.files=[];
+                var _this=this;
+                this.fullscreenLoading = true;
+                this.getRequest("/search?q="+this.keywords).then(resp=>{
+                    _this.fullscreenLoading = false;
+                    var data=resp.data;
+                    console.log(data);
+                    for(var i=0;i<data.length;i++) {
+                        _this.files.push({
+                            title: data[i].title,
+                            highlight: data[i].highlight,
+                            content: data[i].content,
+                        })
+                    }
+                })
+                //console.log(this.files[0].title);
+            },
+        }
+    }
+</script>
+
+<style>
+  .nameTitle{
+    font-size: x-large;
+    font-family:"宋体";
+    color: blue;
+    text-decoration: underline;
+    line-height: 40px;
+  }
+  .nameContent{
+    font-weight: lighter;
+    font-family:"宋体";
+  }
+  .search-text{
+    color: red;
+  }
+  em{color: red}
+</style>

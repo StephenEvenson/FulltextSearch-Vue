@@ -18,7 +18,14 @@
                         style="padding-left: 30px;padding-right:0px;margin-left: 0px;width: 170px;text-align: left"
                         index="/image">
             <i class="el-icon-camera-solid"></i>
-            图片管理
+            人脸识别
+          </el-menu-item>
+
+          <el-menu-item width="180px"
+                        style="padding-left: 30px;padding-right:0px;margin-left: 0px;width: 170px;text-align: left"
+                        index="/file">
+            <i class="el-icon-folder"></i>
+            文件管理
           </el-menu-item>
 
         </el-menu>
