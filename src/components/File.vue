@@ -1,6 +1,6 @@
 <template>
   <div>
-  <div style="display: inline">
+  <div style="display: inline" v-loading="fullscreenLoading">
     <el-input
       placeholder="请输入搜索内容...."
       clearable
@@ -10,7 +10,7 @@
       prefix-icon="el-icon-search"
       v-model="keywords">
     </el-input>
-    <el-button type="primary" size="medium" style="margin-left: 5px" icon="el-icon-search" v-loading.fullscreen.lock="fullscreenLoading" @click="searchEmp">搜索
+    <el-button type="primary" size="medium" style="margin-left: 5px" icon="el-icon-search" @click="searchEmp">搜索
     </el-button>
   </div>
     <el-form :model="files" style="width: 90%;margin-left: 3%">

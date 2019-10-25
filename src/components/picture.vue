@@ -146,7 +146,7 @@
                     this.$message.error("未检测到人脸！");
                         },500)
                 }else{
-                file.url=require('../../static/images/1.jpeg');
+                //file.url=require('../../static/images/1.jpeg');
                 this.imagelist.push({
                     url: file.url,
                     helmets: e.helmets,
