@@ -49,7 +49,7 @@ export default new Router({
       component: Home,
       hidden: true,
       meta: {
-        requireAuth: false // 添加该字段,表示进入这个路由是需要登录的
+        requireAuth: true // 添加该字段,表示进入这个路由是需要登录的
       },
       children:[
         {
