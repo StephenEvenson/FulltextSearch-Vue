@@ -1,4 +1,6 @@
 <template>
+  <div>
+  <div>
   <el-form :rules="rules" class="login-container" label-position="left" :model="loginForm"
            label-width="0px" v-loading="loading">
     <h3 class="login_title">系统登录</h3>
@@ -14,11 +16,23 @@
       <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
     </el-form-item>
   </el-form>
+  </div>
+    <div ref="three_canvas" class="three_canvas"></div>
+  </div>
 </template>
 <script>
+  import * as THREE from "three"
   export default{
     data(){
       return {
+          controls: {
+              scene: null,
+              camera: null,
+              renderer: null,
+              rotationSpeed: 0.03,
+              width: null,
+              height: null
+          },
         rules: {
           username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
           password: [{required: true, message: '请输入密码', trigger: 'blur'}]
@@ -30,6 +44,11 @@
         },
         loading: false
       }
+    },
+    created () {
+        this.$nextTick(() => {
+            this.init()
+        })
     },
     methods: {
       submitClick: function () {
@@ -57,7 +76,47 @@
             }
           }
         });
-      }
+      },
+        init () {
+            let {initMesh, controls} = this;
+            initMesh();
+        },
+        initMesh () {
+            this.width = 200;
+            this.height = 200;
+            this.scene = new THREE.Scene(); // 场景
+            this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 0.1, 1000); // 相机.视场，长宽比，近面，远面
+            this.camera.position.x = 0;
+            this.camera.position.y = 0;
+            this.camera.position.z = 30;
+            this.camera.lookAt(this.scene.position)
+
+            this.renderer = new THREE.WebGLRenderer({ antialias: true })// 渲染器
+            this.renderer.setSize(this.width, this.height)
+            this.renderer.setClearColor(0xFFFFFF, 1.0);
+
+            let cubeGeometry = new THREE.CubeGeometry(10, 10, 10)
+            let cubeMaterial = new THREE.MeshNormalMaterial()
+            this.cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+            this.cube.position.x = 0
+            this.cube.position.y = 0
+            this.cube.position.z = 0
+            this.cube.castShadow = true
+
+            let spotLight = new THREE.SpotLight(0xffffff)
+            this.scene.add(this.cube)
+            this.scene.add(spotLight)
+
+            this.$refs.three_canvas.append(this.renderer.domElement)
+            this.renderScene()
+        },
+        renderScene () {
+            let {controls, cube, scene, camera, renderer} = this;
+            cube.rotation.x += controls.rotationSpeed;
+            cube.rotation.z += controls.rotationSpeed;
+            requestAnimationFrame(this.renderScene);
+            renderer.render(scene, camera)
+        }
     }
   }
 </script>
@@ -65,7 +124,7 @@
   .login-container {
     border-radius: 15px;
     background-clip: padding-box;
-    margin: 180px auto;
+    margin: 90px auto 80px auto;
     width: 350px;
     padding: 35px 35px 15px 35px;
     background: #fff;
