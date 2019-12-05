@@ -56,7 +56,6 @@
                         })
                     }
                 })
-                //console.log(this.files[0].title);
             },
         }
     }
@@ -65,17 +64,16 @@
 <style>
   .nameTitle{
     font-size: x-large;
-    font-family:"宋体";
-    color: blue;
-    text-decoration: underline;
+    color: #0025b2;
+    font-family: system-ui,STKaiti,”黑体”,”宋体”,sans-serif;
     line-height: 40px;
   }
   .nameContent{
-    font-weight: lighter;
-    font-family:"宋体";
+    font-family: system-ui,STKaiti,”黑体”,”宋体”,sans-serif;
   }
-  .search-text{
+  em{
     color: red;
+    font-weight: bold;
+    font-style: normal;
   }
-  em{color: red}
 </style>
