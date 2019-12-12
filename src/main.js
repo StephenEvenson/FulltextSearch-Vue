@@ -13,7 +13,6 @@ import {putRequest} from './utils/api'
 import {isNotNullORBlank} from './utils/utils'
 import './utils/filter_utils'
 import 'font-awesome/css/font-awesome.min.css'
-import {post1} from './utils/api'
 import {uploadFileRequest} from "./utils/api";
 
 Vue.config.productionTip = false
@@ -24,7 +23,6 @@ Vue.prototype.postRequest = postRequest;
 Vue.prototype.deleteRequest = deleteRequest;
 Vue.prototype.putRequest = putRequest;
 Vue.prototype.isNotNullORBlank = isNotNullORBlank;
-Vue.prototype.post1 = post1;
 Vue.prototype.uploadFileRequest=uploadFileRequest;
 
 

@@ -51,31 +51,6 @@ export const postRequest = (url, params) => {
   });
 }
 
-export const post1 = (params) => {
-  return axios({
-    async:true,
-    crossDomain:true,
-    processData: false,
-    contentType: false,
-    mimeType: "multipart/form-data",
-    method: 'post',
-    url: "http://sp.stephenj.me:800/imgFile",
-    //url:"C:/Users/Administrator/Desktop/timg.jpg",
-    data: params,
-    transformRequest: [function (data) {
-      let ret = ''
-      for (let it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-      }
-      return ret
-    }],
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      "cache-control": "no-cache"
-    }
-  });
-}
-
 export const uploadFileRequest = (url, params) => {
   return axios({
     method: 'post',

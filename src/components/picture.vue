@@ -50,7 +50,7 @@
                 progress: 0,//上传进度
                 enlargeImage: '',//放大图片地址
                 params: {
-                    action: 'http://sp.stephenj.me:800/imgFile',
+                    action: 'http://ddns.stephenj.me:8080/imgFile',
                 },
                 imagelist: []
             }
