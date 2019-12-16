@@ -6,11 +6,11 @@
     <h3 class="login_title">系统登录</h3>
     <el-form-item prop="username">
       <el-input type="text" v-model="loginForm.username"
-                auto-complete="off" placeholder="账号"></el-input>
+                auto-complete="off" placeholder="账号" @keyup.enter.native="moveMouse"></el-input>
     </el-form-item>
     <el-form-item prop="password">
-      <el-input type="password" v-model="loginForm.password"
-                auto-complete="off" placeholder="密码" show-password></el-input>
+      <el-input type="password" v-model="loginForm.password" ref="pswd"
+                auto-complete="off" placeholder="密码" @keyup.enter.native="submitClick" show-password></el-input>
     </el-form-item>
     <el-form-item style="width: 100%">
       <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
@@ -50,7 +50,7 @@
             this.init()
         })
     },
-    methods: {
+    methods: {                                              //判断登录信息
       submitClick: function () {
         var _this = this;
         this.loading = true;
@@ -77,6 +77,11 @@
           }
         });
       },
+
+        moveMouse(){
+            this.$refs.pswd.focus();
+        },
+
         init () {
             let {initMesh, controls} = this;
             initMesh();
