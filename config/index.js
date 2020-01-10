@@ -14,7 +14,7 @@ module.exports = {
     proxyTable: {
       '/': {
         //target: 'http://192.168.0.158:8888',
-        target: 'http://localhost:8080',
+        target: 'https://ddns.stephenj.me:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/': ''

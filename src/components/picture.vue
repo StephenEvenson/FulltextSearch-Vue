@@ -50,7 +50,7 @@
                 progress: 0,//上传进度
                 enlargeImage: '',//放大图片地址
                 params: {
-                    action: 'http://ddns.stephenj.me:8080/imgFile',
+                    action: 'https://ddns.stephenj.me:8084/imgFile',
                 },
                 imagelist: []
             }
@@ -139,8 +139,7 @@
                 console.log("——————————success——————————")
                 this.pass = true;
                 this.$message.success("上传成功");
-                //file.url=require('../../static/images/1.jpeg');
-                file.url=require('../../static/images/'+e.image);
+                file.url='https://ddns.stephenj.me:8144/' + e.image;
                 if(!e.existFace){
                     setTimeout(()=>{
                     this.$message.error("未检测到人脸！");
