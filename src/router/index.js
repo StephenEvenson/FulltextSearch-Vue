@@ -40,35 +40,37 @@ export default new Router({
     },*/
     {
       path: '/',
-      name: 'Login',
-      component: Login,
+      name: 'File',
+      component: File,
       hidden: true
-    }, {
-      path: '/home',
-      name: '主页',
-      component: Home,
-      hidden: true,
-      meta: {
-        requireAuth: true // 添加该字段,表示进入这个路由是需要登录的
-      },
-      children:[
-        {
-          path: '/emp',
-          component: EmpBasic,
-          name: '员工管理',
-          meta:{title:'员工基本信息'}
-        },{
-          path: '/image',
-          component: picture,
-          name: '人脸识别',
-          meta:{title:'图片信息'}
-        },{
-          path: '/file',
-          component: File,
-          name: '文件搜索',
-          meta:{title:'搜索文件'}
-        }
-      ]
     }
+    // , {
+    //   path: '/home',
+    //   name: '主页',
+    //   component: Home,
+    //   hidden: true,
+    //   meta: {
+    //     requireAuth: true // 添加该字段,表示进入这个路由是需要登录的
+    //   },
+    //   children:[
+    //     // {
+    //     //   path: '/emp',
+    //     //   component: EmpBasic,
+    //     //   name: '员工管理',
+    //     //   meta:{title:'员工基本信息'}
+    //     // },{
+    //     //   path: '/image',
+    //     //   component: picture,
+    //     //   name: '人脸识别',
+    //     //   meta:{title:'图片信息'}
+    //     // },
+    //     {
+    //       path: '/file',
+    //       component: File,
+    //       name: '文件搜索',
+    //       meta:{title:'搜索文件'}
+    //     }
+    //   ]
+    // }
   ]
 })
