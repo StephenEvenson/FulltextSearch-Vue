@@ -1,4 +1,4 @@
-# vuehr
+# vue
 
 > A Vue.js project
 
