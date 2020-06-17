@@ -19,7 +19,7 @@
         <el-col :span="2"><div class="grid-content bg-purple-light">
             <el-upload
                 class="upload-demo"
-                action="http://192.168.1.19:8081/upload/file"
+                action="http://45.32.60.171:8081/upload/file"
                 :on-change="handleChange"
                 :file-list="fileList3">
                 <el-button size="medium" type="primary" icon="el-icon-upload">上传</el-button>

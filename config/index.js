@@ -14,7 +14,7 @@ module.exports = {
     proxyTable: {
       '/': {
         //target: 'http://192.168.0.158:8888',
-        target: 'http://192.168.1.19:8081',
+        target: 'http://127.0.0.1:8081',
         changeOrigin: true,
         pathRewrite: {
           '^/': ''
