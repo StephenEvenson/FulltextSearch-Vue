@@ -19,15 +19,15 @@
         <el-col :span="2"><div class="grid-content bg-purple-light">
             <el-upload
                 class="upload-demo"
-                action="http://45.32.60.171:8081/upload/file"
+                action="http://ddns.stephenj.me:18081/upload/file"
                 :on-change="handleChange"
                 :file-list="fileList3">
                 <el-button size="medium" type="primary" icon="el-icon-upload">上传</el-button>
             </el-upload>
         </div></el-col>
     </el-row>
-  
-  
+
+
     <el-form :model="files" style="width: 90%;margin-left: 3%">
     <div v-for="(item,key) in files" :key="key" >
       <el-row>
